@@ -9,7 +9,8 @@ node_modules/
 dist/
 # Model/cache
 .cache/
+*.log
 .vercel/
 .vercel-local/
+backend/Microsoft/
 
-.vercel
