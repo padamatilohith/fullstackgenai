@@ -1,0 +1,11 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.env
+*.db
+# Frontend
+node_modules/
+dist/
+# Model/cache
+.cache/

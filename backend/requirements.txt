@@ -1,0 +1,8 @@
+fastapi==0.115.12
+uvicorn[standard]==0.34.0
+SQLAlchemy==2.0.38
+pymysql==1.1.1
+python-dotenv==1.0.1
+faster-whisper==1.1.1
+requests==2.34.2
+numpy==2.2.3
