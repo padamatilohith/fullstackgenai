@@ -1,5 +1,4 @@
-# VoxNote — Real-time Speech to Text
-
+﻿# fullstackgenai — VoxNote: Real-time Speech to Text
 A full-stack speech-to-text MVP prepared for the Procucev AI Tech hiring assignment.
 
 ## Features
@@ -60,7 +59,7 @@ This starts MySQL on host port 3307 and the API on port 8000. The Vite frontend 
 - `GET /api/transcriptions/{id}`
 - `PUT /api/transcriptions/{id}`
 - `DELETE /api/transcriptions/{id}`
-- `WS /ws/transcribe` — binary Float32 mono audio at 16 kHz; send `{"action":"stop"}` to finish
+- `WS /ws/transcribe` â€” binary Float32 mono audio at 16 kHz; send `{"action":"stop"}` to finish
 
 Open http://localhost:8000/docs for interactive API documentation.
 
