@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Mic, Square, FileText, Search, Trash2, Pencil, Check, X, Copy, Plus, AudioLines, Languages } from 'lucide-react'
 
-const API = import.meta.env.VITE_API_URL || 'http://localhost:8000'
+const API = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:8000' : window.location.origin)
 const WS = API.replace(/^http/, 'ws') + '/ws/transcribe'
 
 export default function App() {

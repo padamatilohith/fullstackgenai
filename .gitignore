@@ -9,3 +9,7 @@ node_modules/
 dist/
 # Model/cache
 .cache/
+.vercel/
+.vercel-local/
+
+.vercel

@@ -1,5 +1,7 @@
 import os
 from functools import lru_cache
+if os.getenv("VERCEL"):
+    os.environ.setdefault("HF_HOME", "/tmp/huggingface")
 import numpy as np
 from faster_whisper import WhisperModel
 

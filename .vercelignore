@@ -1,0 +1,10 @@
+.git
+.vercel/
+.vercel-local/
+.venv
+Microsoft/
+copliotactivity1/
+backend/__pycache__/
+backend/*.db
+frontend/node_modules/
+frontend/dist/
