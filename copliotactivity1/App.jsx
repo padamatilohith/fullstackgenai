@@ -1,4 +1,5 @@
 ﻿import React, { useState } from "react";
+import "./App.css";
 
 export default function App() {
   const [todos, setTodos] = useState([]);
@@ -31,18 +32,20 @@ export default function App() {
   }
 
   return (
-    <main className="app">
-      <section className="todo-card">
-        <header>
+    <main className="app-shell">
+      <section className="todo-card" aria-labelledby="todo-title">
+        <header className="todo-header">
           <div>
-            <h1>My Todo List</h1>
+            <h1 id="todo-title">My Todo List</h1>
             <p>Organize your day and finish tasks faster.</p>
           </div>
-          <span>{todos.length} items</span>
+          <span className="item-badge" aria-label={`${todos.length} total items`}>
+            {todos.length} items
+          </span>
         </header>
 
-        <form onSubmit={addTodo}>
-          <label htmlFor="new-todo">New task</label>
+        <form className="todo-form" onSubmit={addTodo}>
+          <label className="visually-hidden" htmlFor="new-todo">New task</label>
           <input
             id="new-todo"
             value={input}
@@ -52,33 +55,33 @@ export default function App() {
           <button type="submit">Add task</button>
         </form>
 
-        <div aria-live="polite">
+        <div className="todo-stats" aria-live="polite">
           <span>{openCount} open</span>
-          {" · "}
           <span>{doneCount} done</span>
         </div>
 
         {todos.length === 0 ? (
-          <p>No tasks yet. Add one above!</p>
+          <p className="empty-state">No tasks yet. Add one above!</p>
         ) : (
-          <ul>
+          <ul className="todo-list">
             {todos.map((todo) => (
-              <li key={todo.id}>
-                <label>
+              <li className="todo-item" key={todo.id}>
+                <label className="todo-label">
                   <input
                     type="checkbox"
                     checked={todo.completed}
                     onChange={() => toggleTodo(todo.id)}
                   />
-                  <span
-                    style={{
-                      textDecoration: todo.completed ? "line-through" : "none",
-                    }}
-                  >
+                  <span className={todo.completed ? "todo-text is-complete" : "todo-text"}>
                     {todo.text}
                   </span>
                 </label>
-                <button type="button" onClick={() => deleteTodo(todo.id)}>
+                <button
+                  className="remove-button"
+                  type="button"
+                  aria-label={`Remove ${todo.text}`}
+                  onClick={() => deleteTodo(todo.id)}
+                >
                   Remove
                 </button>
               </li>
