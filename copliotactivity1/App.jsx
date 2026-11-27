@@ -3,6 +3,8 @@
 export default function App() {
   const [todos, setTodos] = useState([]);
   const [input, setInput] = useState("");
+  const openCount = todos.filter((todo) => !todo.completed).length;
+  const doneCount = todos.length - openCount;
 
   function addTodo(event) {
     event.preventDefault();
@@ -24,12 +26,19 @@ export default function App() {
     );
   }
 
+  function deleteTodo(id) {
+    setTodos((currentTodos) => currentTodos.filter((todo) => todo.id !== id));
+  }
+
   return (
     <main className="app">
       <section className="todo-card">
         <header>
-          <h1>My Todo List</h1>
-          <p>Organize your day and finish tasks faster.</p>
+          <div>
+            <h1>My Todo List</h1>
+            <p>Organize your day and finish tasks faster.</p>
+          </div>
+          <span>{todos.length} items</span>
         </header>
 
         <form onSubmit={addTodo}>
@@ -42,6 +51,12 @@ export default function App() {
           />
           <button type="submit">Add task</button>
         </form>
+
+        <div aria-live="polite">
+          <span>{openCount} open</span>
+          {" · "}
+          <span>{doneCount} done</span>
+        </div>
 
         {todos.length === 0 ? (
           <p>No tasks yet. Add one above!</p>
@@ -63,6 +78,9 @@ export default function App() {
                     {todo.text}
                   </span>
                 </label>
+                <button type="button" onClick={() => deleteTodo(todo.id)}>
+                  Remove
+                </button>
               </li>
             ))}
           </ul>
