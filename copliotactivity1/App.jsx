@@ -16,6 +16,14 @@ export default function App() {
     setInput("");
   }
 
+  function toggleTodo(id) {
+    setTodos((currentTodos) =>
+      currentTodos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
+  }
+
   return (
     <main className="app">
       <section className="todo-card">
@@ -40,7 +48,22 @@ export default function App() {
         ) : (
           <ul>
             {todos.map((todo) => (
-              <li key={todo.id}>{todo.text}</li>
+              <li key={todo.id}>
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={todo.completed}
+                    onChange={() => toggleTodo(todo.id)}
+                  />
+                  <span
+                    style={{
+                      textDecoration: todo.completed ? "line-through" : "none",
+                    }}
+                  >
+                    {todo.text}
+                  </span>
+                </label>
+              </li>
             ))}
           </ul>
         )}
